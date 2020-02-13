@@ -2,9 +2,10 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-// Set a constant for the port that our express server will listen on
 const PORT = 3001;
-const database = require ('../database/index.js')
+import {getFromDB, postToDB, updateDB, deleteFromDB} from './controller.js';
+
+
 
 app.use(express.json())
 
@@ -13,16 +14,21 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
 //get request to get the data from the db
-app.get('/listings', function (req, res) {
-    // TODO - your code here!
-    // This route should send back the top 25 repos
-  database.fetch((err, results) => {
-    if(err) {
-      console.log(err)
-    } else {
-      res.send(results)
-    }
-  });
-  });
+//middleware function inside of cotroller.js file
+app.get('/database/listings', getFromDB);
+
+
+//post request to post listing details to the db
+//middlware function found inside controller.js
+app.post("/database/listing", postToDB);
+
+
+//update request 
+app.put('/database/listing/:id', updateDB);
+
+
+//delete data from the database
+app.delete('/database/listing/:id', deleteFromDB);
+
 
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));
