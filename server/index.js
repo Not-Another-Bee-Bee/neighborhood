@@ -13,22 +13,21 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
-//get request to get the data from the db
+
+//get request to database to grab lsiting details for current listing
+app.get('api/listings/:id', getFromDB);
+
+//get request to grab all nearby homes that are similar to the current listing id
 //middleware function inside of cotroller.js file
-app.get('/database/listings', getFromDB);
+app.get('api/listings/:id', getFromDB);
 
-
-//post request to post listing details to the db
-//middlware function found inside controller.js
-app.post("/database/listing", postToDB);
-
-
+app.post()
 //update request 
-app.put('/database/listing/:id', updateDB);
+app.put('api/listing/:id', updateDB);
 
 
-//delete data from the database
-app.delete('/database/listing/:id', deleteFromDB);
+//delete listing from DB based on listing ID
+app.delete('api/listing/:id', deleteFromDB);
 
 
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));
