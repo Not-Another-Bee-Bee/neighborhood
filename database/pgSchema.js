@@ -29,7 +29,7 @@ pool.connect(function(err, client, done) {
      
      CREATE TABLE "neighborhoods"
      (
-      "neighborhoods_id"        varchar(10) NOT NULL,
+      "neighborhood_id"        varchar(10) NOT NULL,
       "transitscore"             decimal NOT NULL,
       "walkingscore"             decimal NOT NULL,
       "neighborhood_home_value" decimal(4, 2) NOT NULL,
@@ -45,7 +45,7 @@ pool.connect(function(err, client, done) {
      
     
      
-     CREATE TABLE "properties"
+     CREATE TABLE "listings"
      (
       "listings_id"       serial NOT NULL,
       "neighborhoods_id" varchar(10) NOT NULL,
@@ -55,15 +55,15 @@ pool.connect(function(err, client, done) {
       "state"             varchar(20) NOT NULL,
       "city"              varchar(50) NOT NULL,
       "median_zestimate"  integer NOT NULL,
-      "baths"             integer NULL,
-      "rooms"             integer NULL,
+      "baths"             integer NOT NULL,
+      "rooms"             integer NOT NULL,
       "listing_status"    varchar(20) NOT NULL,
       "sq_ft"             integer NOT NULL,
       CONSTRAINT "PK_listings" PRIMARY KEY ( "listings_id" ),
       CONSTRAINT "FK_107" FOREIGN KEY ( "neighboorhoods_id" ) REFERENCES "neighborhoods" ( "neighboorhoods_id" )
      );
-     CREATE INDEX ON properties(listings_id);
-     CREATE INDEX "fkIdx_107" ON "properties"
+     CREATE INDEX ON listings(listings_id);
+     CREATE INDEX "fkIdx_107" ON "listings"
      (
       "neighboorhoods_id"
      );
