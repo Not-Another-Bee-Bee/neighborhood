@@ -105,7 +105,7 @@ npm install
 
 
 
-  **URL**: `/listings/:listingsID/agents/:agentID/`
+  **URL**: '/listings/:listingsID/agents/:agentID/'
     * **NOTES:** POST a listing by a specific agent
     * **METHOD:** _`POST`_
     * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
@@ -126,7 +126,8 @@ npm install
         rooms INTEGER NOT NULL,
         listing_status VARCHAR(20) NOT NULL,
         sq_ft INTEGER NOT NULL
-      }```
+      }
+      ```
 
   **URL:** '/listings/:listingsID/agents/:agentID/'
     * **NOTES:** UPDATE a listing by a specific agent
