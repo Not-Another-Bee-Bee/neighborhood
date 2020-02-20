@@ -43,11 +43,11 @@ npm install
 3) npm run start
 
 # CRUD  API Routes 
-### Lising Routes:
+### Listing Routes:
 
 
 * **URL**: /listings/:listingID
- * **Note:** Get property listing data from database 
+  * **Notes:** Get property listing data from database 
   * **METHOD:** _`GET`_
   * **Example:** `app.get('/listings/25')`
     Gets all data from the database for listing with the ID of 25
@@ -76,7 +76,7 @@ npm install
 
 
  * **URL**: /listings/:listingID
- * **Note:** Get all nearby listings within same zipcode that have similar home listing properties(i.e. # of baths, sq-Ft#) based on listingID 
+  * **Notes:** Get all nearby listings within same zipcode that have similar home listing properties(i.e. # of baths, sq-Ft#) based on listingID 
   * **METHOD:** _`GET`_
   * **Example:** `app.get('/listings/25/neighborhood')`
     Gets all data from the database for listing with the ID of 25
@@ -107,12 +107,12 @@ npm install
 
 
   * **URL**: /listings/:listingsID/agents/:agentID
-    * **Note:** POST a listing by a specific agent
+    * **Notes:** POST a listing by a specific agent
     * **METHOD:** _`POST`_
     * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
       Posts a listing to the database with ID 25 by an agent user with ID 2
-      * **URL Params:** `listingID = [integer], agentID = [integer]`
-      * **Request Body:**
+    * **URL Params:** `listingID = [integer], agentID = [integer]`
+    * **Request Body:**
       ```javascript
       listing = {
         listings_id INTEGER NOT NULL,
@@ -131,12 +131,12 @@ npm install
         ```
 
   * **URL:** /listings/:listingsID/agents/:agentID
-    * **Note:** UPDATE a listing by a specific agent
+    * **Notes:** UPDATE a listing by a specific agent
     * **METHOD:** _`PUT`_
     * **Example:** `app.put('/listings/25/agents/2/listing')`
       update a listing on the database with ID 25 by an agent user with ID 2
-      * **URL Params:** `listingID = [integer], agentID = [integer]`
-      * **Request Body:**
+    * **URL Params:** `listingID = [integer], agentID = [integer]`
+    * **Request Body:**
       ``` javascript
       listing = {
         listings_id INTEGER NOT NULL,
@@ -155,13 +155,14 @@ npm install
       ```
 
 
-    * **URL**: /listings/:listingsID/agents/:agentID
-    * **Note:** delete a listing by a specific agent
+  * **URL**: /listings/:listingsID/agents/:agentID
+    * **Notes:** delete a listing by a specific agent
     * **METHOD:** _`DELETE`_
     * **Example:** `app.delete('/listings/25/agents/2/listing')`
+
       delete a listing on the database with ID 25 by an agent user with ID 2
-      * **URL Params:** `listingID = [integer], agentID = [integer]`
-      * **Request Body:**
+    * **URL Params:** `listingID = [integer], agentID = [integer]`
+    * **Request Body:**
       None
 
 
