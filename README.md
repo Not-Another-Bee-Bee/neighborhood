@@ -106,8 +106,8 @@ npm install
 
 
 
-  **URL**: /listings/:listingsID/agents/:agentID/
-    * **NOTE:** POST a listing by a specific agent
+  **URL**: /listings/:listingsID/agents/:agentID
+    * **Note:** POST a listing by a specific agent
     * **METHOD:** _`POST`_
     * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
       Posts a listing to the database with ID 25 by an agent user with ID 2
@@ -130,7 +130,7 @@ npm install
         }
         ```
 
-  **URL:** /listings/:listingsID/agents/:agentID/
+  **URL:** /listings/:listingsID/agents/:agentID
     * **Note:** UPDATE a listing by a specific agent
     * **METHOD:** _`PUT`_
     * **Example:** `app.put('/listings/25/agents/2/listing')`
@@ -155,7 +155,7 @@ npm install
       ```
 
 
-    **URL**: /listings/:listingsID/agents/:agentID/
+    **URL**: /listings/:listingsID/agents/:agentID
     * **Note:** delete a listing by a specific agent
     * **METHOD:** _`DELETE`_
     * **Example:** `app.delete('/listings/25/agents/2/listing')`
