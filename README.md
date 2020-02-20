@@ -101,13 +101,13 @@ npm install
       neighborhood_home_value DECIMAL(4, 2) NOT NULL,
       one_year_prediction decimal(4, 2) NOT NULL
       }
-  ],
+  ]
   ```
 
 
 
 
-  **URL**: '/listings/:listingsID/agents/:agentID/'
+  **URL:** `/listings/:listingsID/agents/:agentID/`
     * **NOTES:** POST a listing by a specific agent
     * **METHOD:** _`POST`_
     * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
@@ -128,10 +128,9 @@ npm install
         rooms INTEGER NOT NULL,
         listing_status VARCHAR(20) NOT NULL,
         sq_ft INTEGER NOT NULL
-      }
-      ```
+      }```
 
-  **URL**: '/listings/:listingsID/agents/:agentID/'
+  **URL:** '/listings/:listingsID/agents/:agentID/'
     * **NOTES:** UPDATE a listing by a specific agent
     * **METHOD:** _`PUT`_
     * **EXAMPLE:** `app.put('/listings/25/agents/2/listing')`
@@ -158,7 +157,7 @@ npm install
 
     **URL**: '/listings/:listingsID/agents/:agentID/'
     * **NOTES:** delete a listing by a specific agent
-    * **METHOD:** _`DELEte`_
+    * **METHOD:** _`DELETE`_
     * **EXAMPLE:** `app.delete('/listings/25/agents/2/listing')`
       delete a listing on the database with ID 25 by an agent user with ID 2
       * **URL Params:** `listingID = [integer], agentID = [integer]`
