@@ -82,8 +82,7 @@ npm install
   * **URL Params:** `listingsID = [integer]`
   * **Returns:**
   ```javascript
-  listings = 
-    {
+  listings = {
       listings_id INTEGER NOT NULL,
       neighborhoods_id VARCHAR(10) NOT NULL,
       address VARCHAR(50) NOT NULL,
@@ -100,14 +99,13 @@ npm install
       walkingscore DECIMAL NOT NULL,
       neighborhood_home_value DECIMAL(4, 2) NOT NULL,
       one_year_prediction decimal(4, 2) NOT NULL
-      }
-  
-  ```
+    }
+    ```
 
 
 
 
-  **URL:** `/listings/:listingsID/agents/:agentID/`
+  **URL**: `/listings/:listingsID/agents/:agentID/`
     * **NOTES:** POST a listing by a specific agent
     * **METHOD:** _`POST`_
     * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
