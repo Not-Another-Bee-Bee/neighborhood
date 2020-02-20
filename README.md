@@ -75,7 +75,7 @@ npm install
   ```
 
 
- * **URL**: /listings/:listingID
+* **URL**: /listings/:listingID
   * **Notes:** Get all nearby listings within same zipcode that have similar home listing properties(i.e. # of baths, sq-Ft#) based on listingID 
   * **METHOD:** _`GET`_
   * **Example:** `app.get('/listings/25/neighborhood')`
