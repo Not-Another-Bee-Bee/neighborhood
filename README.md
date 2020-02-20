@@ -159,8 +159,7 @@ npm install
   * **Notes:** delete a listing by a specific agent
   * **METHOD:** _`DELETE`_
   * **Example:** `app.delete('/listings/25/agents/2/listing')`
-
-      delete a listing on the database with ID 25 by an agent user with ID 2
+  delete a listing on the database with ID 25 by an agent user with ID 2
   * **URL Params:** `listingID = [integer], agentID = [integer]`
   * **Request Body:**
       None
