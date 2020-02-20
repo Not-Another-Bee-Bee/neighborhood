@@ -106,13 +106,13 @@ npm install
 
 
 
-  * **URL**: /listings/:listingsID/agents/:agentID
-    * **Notes:** POST a listing by a specific agent
-    * **METHOD:** _`POST`_
-    * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
+* **URL**: /listings/:listingsID/agents/:agentID
+  * **Notes:** POST a listing by a specific agent
+  * **METHOD:** _`POST`_
+  * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
       Posts a listing to the database with ID 25 by an agent user with ID 2
-    * **URL Params:** `listingID = [integer], agentID = [integer]`
-    * **Request Body:**
+  * **URL Params:** `listingID = [integer], agentID = [integer]`
+  * **Request Body:**
       ```javascript
       listing = {
         listings_id INTEGER NOT NULL,
@@ -130,13 +130,13 @@ npm install
         }
         ```
 
-  * **URL:** /listings/:listingsID/agents/:agentID
-    * **Notes:** UPDATE a listing by a specific agent
-    * **METHOD:** _`PUT`_
-    * **Example:** `app.put('/listings/25/agents/2/listing')`
+* **URL:** /listings/:listingsID/agents/:agentID
+  * **Notes:** UPDATE a listing by a specific agent
+  * **METHOD:** _`PUT`_
+  * **Example:** `app.put('/listings/25/agents/2/listing')`
       update a listing on the database with ID 25 by an agent user with ID 2
-    * **URL Params:** `listingID = [integer], agentID = [integer]`
-    * **Request Body:**
+  * **URL Params:** `listingID = [integer], agentID = [integer]`
+  * **Request Body:**
       ``` javascript
       listing = {
         listings_id INTEGER NOT NULL,
@@ -155,14 +155,14 @@ npm install
       ```
 
 
-  * **URL**: /listings/:listingsID/agents/:agentID
-    * **Notes:** delete a listing by a specific agent
-    * **METHOD:** _`DELETE`_
-    * **Example:** `app.delete('/listings/25/agents/2/listing')`
+* **URL**: /listings/:listingsID/agents/:agentID
+  * **Notes:** delete a listing by a specific agent
+  * **METHOD:** _`DELETE`_
+  * **Example:** `app.delete('/listings/25/agents/2/listing')`
 
       delete a listing on the database with ID 25 by an agent user with ID 2
-    * **URL Params:** `listingID = [integer], agentID = [integer]`
-    * **Request Body:**
+  * **URL Params:** `listingID = [integer], agentID = [integer]`
+  * **Request Body:**
       None
 
 
