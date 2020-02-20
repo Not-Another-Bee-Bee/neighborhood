@@ -21,7 +21,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
       do {
         i -= 1;
         id += 1001;
-         const neighborHoodZip =faker.random.number({min:1001, max:1100});
+         const neighborHoodZip =faker.random.number({min:1001, max:10000});
         const address = faker.address.streetAddress();
         const price = faker.random.number({min:100000, max:2000000});
         const images = [faker.image.abstract()];
@@ -70,45 +70,45 @@ function writeTenMillionUsers(writer, encoding, callback) {
 
 
 
-const writeNeighborhoods = fs.createWriteStream('neighboorhoods.csv');
-writeNeighborhoods.write('neighboorhoods_id, transitscore, walkingscore, neighbor_hood_home_value, one_year_prediction\n', 'utf8');
+// const writeNeighborhoods = fs.createWriteStream('neighboorhoods.csv');
+// writeNeighborhoods.write('neighboorhoods_id, transitscore, walkingscore, neighbor_hood_home_value, one_year_prediction\n', 'utf8');
 
 
-function writeTenMillionUsers(writer, encoding, callback) {
-    let i = 10000000;
-    let id = 1000;
-    function write() {
-      let ok = true;
-      do {
-        i -= 1;
-        id +=1;
-        const neighboorhoods_id = id;
-        const transiteScore = faker.finance.amount(0,5,2);
-        const walkingscore = faker.finance.amount(0,5,2);
-        const neighbor_hood_home_value = faker.finance.amount(0,5,2);
-        const one_year_prediction = faker.finance.amount(0,5,2);
+// function writeTenMillionUsers(writer, encoding, callback) {
+//     let i = 10000;
+//     let id = 1000;
+//     function write() {
+//       let ok = true;
+//       do {
+//         i -= 1;
+//         id +=1;
+//         const neighboorhoods_id = id;
+//         const transiteScore = faker.finance.amount(0,5,2);
+//         const walkingscore = faker.finance.amount(0,5,2);
+//         const neighbor_hood_home_value = faker.finance.amount(0,5,2);
+//         const one_year_prediction = faker.finance.amount(0,5,2);
 
-        const data = `${neighboorhoods_id}, ${transiteScore}, ${walkingscore}, ${neighbor_hood_home_value}, ${one_year_prediction}\n`;
+//         const data = `${neighboorhoods_id}, ${transiteScore}, ${walkingscore}, ${neighbor_hood_home_value}, ${one_year_prediction}\n`;
        
-        if (i === 0) {
-            writer.write(data, encoding, callback);
-          } else {
-            // see if we should continue, or wait
-            // don't pass the callback, because we're not done yet.
-            ok = writer.write(data, encoding);
-          }
-        } while (i > 0 && ok);
-        if (i > 0) {
-          console.log(id);
-          // had to stop early!
-          // write some more once it drains
-          writer.once('drain', write);
-        }
-      }
-    write();
-    };
+//         if (i === 0) {
+//             writer.write(data, encoding, callback);
+//           } else {
+//             // see if we should continue, or wait
+//             // don't pass the callback, because we're not done yet.
+//             ok = writer.write(data, encoding);
+//           }
+//         } while (i > 0 && ok);
+//         if (i > 0) {
+//           console.log(id);
+//           // had to stop early!
+//           // write some more once it drains
+//           writer.once('drain', write);
+//         }
+//       }
+//     write();
+//     };
 
 
-    writeTenMillionUsers(writeNeighborhoods, 'utf-8', () => {
-      writeNeighborhoods.end();
-    });
+//     writeTenMillionUsers(writeNeighborhoods, 'utf-8', () => {
+//       writeNeighborhoods.end();
+//     });

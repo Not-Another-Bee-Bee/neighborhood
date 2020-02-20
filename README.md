@@ -36,13 +36,161 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+# Getting started with App:
+
+1) npm run seedDB
+2) npm run react-dev
+3) npm run start
+
+# CRUD  API Routes 
+### Lising Routes:
 
 
-## CRUD  API Routes 
+* **URL**: /listings/:listingID
+ * **Note:** Get property listing data from database 
+  * **METHOD:** _`GET`_
+  * **Example:** `app.get('/listings/25')`
+    Gets all data from the database for listing with the ID of 25
+  * **URL Params:** `listingsID = [integer]`
+  * **Returns:**
+  ```javascript
+  listing = {
+    listings_id INTEGER NOT NULL,
+      neighborhoods_id VARCHAR(10) NOT NULL,
+      address VARCHAR(50) NOT NULL,
+      price INTEGER NOT NULL,
+      images TEXT[] NOT NULL,
+      state VARCHAR(20) NOT NULL,
+      city VARCHAR(50),
+      median_zestimate INTEGER NOT NULL,
+      baths INTEGER NOT NULL,
+      rooms INTEGER NOT NULL,
+      listing_status VARCHAR(20) NOT NULL,
+      sq_ft INTEGER NOT NULL,
+      transitscore DECIMAL NOT NULL,
+      walkingscore DECIMAL NOT NULL,
+      neighborhood_home_value DECIMAL(4, 2) NOT NULL,
+      one_year_prediction decimal(4, 2) NOT NULL
+  }
+  ```
 
-### Get property listing data from database 
+ **URL**: /listings/:listingID
+ * **Note:** Get all nearby listings within same zipcode that have similar home listing properties(i.e. # of baths, sq-Ft#) based on listingID 
+  * **METHOD:** _`GET`_
+  * **Example:** `app.get('/listings/25/neighborhood')`
+    Gets all data from the database for listing with the ID of 25
+  * **URL Params:** `listingsID = [integer]`
+  * **Returns:**
+  ```javascript
+  listings = [
+    {
+      listings_id INTEGER NOT NULL,
+      neighborhoods_id VARCHAR(10) NOT NULL,
+      address VARCHAR(50) NOT NULL,
+      price INTEGER NOT NULL,
+      images TEXT[] NOT NULL,
+      state VARCHAR(20) NOT NULL,
+      city VARCHAR(50),
+      median_zestimate INTEGER NOT NULL,
+      baths INTEGER NOT NULL,
+      rooms INTEGER NOT NULL,
+      listing_status VARCHAR(20) NOT NULL,
+      sq_ft INTEGER NOT NULL,
+      transitscore DECIMAL NOT NULL,
+      walkingscore DECIMAL NOT NULL,
+      neighborhood_home_value DECIMAL(4, 2) NOT NULL,
+      one_year_prediction decimal(4, 2) NOT NULL
+      }
+  ],
+  ```
 
-- GET ```app.get('/api/listings', getFromDB);```
+
+
+
+  **URL**: '/listings/:listingsID/agents/:agentID/'
+    * **NOTES:** POST a listing by a specific agent
+    * **METHOD:** _`POST`_
+    * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
+      Posts a listing to the database with ID 25 by an agent user with ID 2
+      * **URL Params:** `listingID = [integer], agentID = [integer]`
+      * **Request Body:**
+      ``` javascript
+      listing = {
+        listings_id INTEGER NOT NULL,
+        neighborhoods_id VARCHAR(10) NOT NULL,
+        address VARCHAR(50) NOT NULL,
+        price INTEGER NOT NULL,
+        images TEXT[] NOT NULL,
+        state VARCHAR(20) NOT NULL,
+        city VARCHAR(50),
+        median_zestimate INTEGER NOT NULL,
+        baths INTEGER NOT NULL,
+        rooms INTEGER NOT NULL,
+        listing_status VARCHAR(20) NOT NULL,
+        sq_ft INTEGER NOT NULL
+      }
+      ```
+
+  **URL**: '/listings/:listingsID/agents/:agentID/'
+    * **NOTES:** UPDATE a listing by a specific agent
+    * **METHOD:** _`PUT`_
+    * **EXAMPLE:** `app.put('/listings/25/agents/2/listing')`
+      update a listing on the database with ID 25 by an agent user with ID 2
+      * **URL Params:** `listingID = [integer], agentID = [integer]`
+      * **Request Body:**
+      ``` javascript
+      listing = {
+        listings_id INTEGER NOT NULL,
+        neighborhoods_id VARCHAR(10) NOT NULL,
+        address VARCHAR(50) NOT NULL,
+        price INTEGER NOT NULL,
+        images TEXT[] NOT NULL,
+        state VARCHAR(20) NOT NULL,
+        city VARCHAR(50),
+        median_zestimate INTEGER NOT NULL,
+        baths INTEGER NOT NULL,
+        rooms INTEGER NOT NULL,
+        listing_status VARCHAR(20) NOT NULL,
+        sq_ft INTEGER NOT NULL
+      }
+      ```
+
+
+    **URL**: '/listings/:listingsID/agents/:agentID/'
+    * **NOTES:** delete a listing by a specific agent
+    * **METHOD:** _`DELEte`_
+    * **EXAMPLE:** `app.delete('/listings/25/agents/2/listing')`
+      delete a listing on the database with ID 25 by an agent user with ID 2
+      * **URL Params:** `listingID = [integer], agentID = [integer]`
+      * **Request Body:**
+      None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ```app.get('/api/listings', getFromDB);```
   -  original API call to get lisiting from database
   - return body is JSON OBJECT with listings data
   ```var output = [

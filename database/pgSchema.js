@@ -29,10 +29,10 @@ pool.connect(function(err, client, done) {
      
      CREATE TABLE "neighborhoods"
      (
-      "neighboorhoods_id"        varchar(10) NOT NULL,
+      "neighborhoods_id"        varchar(10) NOT NULL,
       "transitscore"             decimal NOT NULL,
       "walkingscore"             decimal NOT NULL,
-      "neighbor_hood_home_value" decimal(4, 2) NOT NULL,
+      "neighborhood_home_value" decimal(4, 2) NOT NULL,
       "one_year_prediction"      decimal(4,2) NOT NULL,
       CONSTRAINT "PK_walkingscore" PRIMARY KEY ( "neighboorhoods_id" )
      );
@@ -48,44 +48,26 @@ pool.connect(function(err, client, done) {
      CREATE TABLE "properties"
      (
       "listings_id"       serial NOT NULL,
-      "neighboorhoods_id" varchar(10) NOT NULL,
+      "neighborhoods_id" varchar(10) NOT NULL,
       "address"           varchar(50) NOT NULL,
       "price"             integer NOT NULL,
       "images"            text [] NOT NULL,
       "state"             varchar(20) NOT NULL,
       "city"              varchar(50) NOT NULL,
-      "median_zestimate"  varchar(50) NOT NULL,
+      "median_zestimate"  integer NOT NULL,
       "baths"             integer NULL,
       "rooms"             integer NULL,
-      "listing_status"    varchar(10) NOT NULL,
+      "listing_status"    varchar(20) NOT NULL,
       "sq_ft"             integer NOT NULL,
       CONSTRAINT "PK_listings" PRIMARY KEY ( "listings_id" ),
       CONSTRAINT "FK_107" FOREIGN KEY ( "neighboorhoods_id" ) REFERENCES "neighborhoods" ( "neighboorhoods_id" )
      );
-     
+     CREATE INDEX ON properties(listings_id);
      CREATE INDEX "fkIdx_107" ON "properties"
      (
       "neighboorhoods_id"
      );
-     
-     
-     
-     
-     
-     
-     
-     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    `))
+     `))
     query.on('end', (res) => {
         // pool shutdown
         console.log("ending");

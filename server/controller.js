@@ -1,32 +1,56 @@
+const Listing = require('../database/models')
+module.exports = {
 
-const database = require('../database/index.js');
-
-//get data from the DB
-export const getFromDB = function (req, res) {
-    database.fetch((err, results) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.send(results)
-        }
-    });
-};
-
-
-//post data to theDB
-export const postToDB = function (req, res) {
-//todo
-};
+    //get data from the DB
+    getFromDB: function (req, res) {
+        const { id } = req.params
+        Listing.getListing(id, (error, results) => {
+            if (error) {
+                res.status(500).end();
+            } else {
+                res.status(200).send(results);
+            }
+        })
+    },
 
 
+    //post data to theDB
+    postToDB: function (req, res) {
+        const {data} = req.body
+        Listing.postListing(data, (error, results)=> {
+            if(error) {
+                res.status(500).end();
+            } else {
+                res.status(200).send(results)
+            }
+        })
+    },
 
-//update data in the DB
+    updateDB: function (req, res) {
+        //todo
+    },
 
-export const updateDB = function(req, res) {
-//todo
-};
+    deleteFromDB: function (req, res) {
+        const {id} = req.params
+        Listing.deleteListing(id, (error, results) => {
+            if (error) {
+                res.status(500).end();
+            } else {
+                res.status(200).send(results);
+            }
+        })
+    },
 
+    getNearbyHomesFromDB: function (req, res) {
+        const {id} = req.params
+        Listing.getNearbyListings(id, (error, result)=> {
+            if (error) {
+                console.log(error);
+                res.staus(500).end();
+            } else {
+                res.status(200).send(result)
+            }
+        })
+    }
 
-export const deleteFromDB = function(req, res) {
-//todo
 };
