@@ -82,7 +82,7 @@ npm install
   * **URL Params:** `listingsID = [integer]`
   * **Returns:**
   ```javascript
-  listings = [
+  listings = 
     {
       listings_id INTEGER NOT NULL,
       neighborhoods_id VARCHAR(10) NOT NULL,
@@ -101,7 +101,7 @@ npm install
       neighborhood_home_value DECIMAL(4, 2) NOT NULL,
       one_year_prediction decimal(4, 2) NOT NULL
       }
-  ]
+  
   ```
 
 
