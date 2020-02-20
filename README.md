@@ -55,7 +55,7 @@ npm install
   * **Returns:**
   ```javascript
   listing = {
-    listings_id INTEGER NOT NULL,
+      listings_id INTEGER NOT NULL,
       neighborhoods_id VARCHAR(10) NOT NULL,
       address VARCHAR(50) NOT NULL,
       price INTEGER NOT NULL,
@@ -73,6 +73,7 @@ npm install
       one_year_prediction decimal(4, 2) NOT NULL
   }
   ```
+
 
  **URL**: /listings/:listingID
  * **Note:** Get all nearby listings within same zipcode that have similar home listing properties(i.e. # of baths, sq-Ft#) based on listingID 
@@ -99,8 +100,8 @@ npm install
       walkingscore DECIMAL NOT NULL,
       neighborhood_home_value DECIMAL(4, 2) NOT NULL,
       one_year_prediction decimal(4, 2) NOT NULL
-    }
-    ```
+  }
+  ```
 
 
 
@@ -112,7 +113,7 @@ npm install
       Posts a listing to the database with ID 25 by an agent user with ID 2
       * **URL Params:** `listingID = [integer], agentID = [integer]`
       * **Request Body:**
-      ``` javascript
+      ```javascript
       listing = {
         listings_id INTEGER NOT NULL,
         neighborhoods_id VARCHAR(10) NOT NULL,
@@ -126,8 +127,8 @@ npm install
         rooms INTEGER NOT NULL,
         listing_status VARCHAR(20) NOT NULL,
         sq_ft INTEGER NOT NULL
-      }
-      ```
+        }
+        ```
 
   **URL:** '/listings/:listingsID/agents/:agentID/'
     * **NOTES:** UPDATE a listing by a specific agent
