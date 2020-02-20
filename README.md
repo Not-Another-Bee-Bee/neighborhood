@@ -106,7 +106,7 @@ npm install
 
 
 
-  **URL**: '/listings/:listingsID/agents/:agentID/'
+  **URL**: /listings/:listingsID/agents/:agentID/
     * **NOTES:** POST a listing by a specific agent
     * **METHOD:** _`POST`_
     * **EXAMPLE:** `app.post('/listings/25/agents/2/listing')`
