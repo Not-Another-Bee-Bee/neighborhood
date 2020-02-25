@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './Neighborhood.jsx';
 
 
-ReactDOM.render (<App/> , document.getElementsByClassName('nh')[1])
+// ReactDOM.render (<App/> , document.getElementsByid('app'));
 
-//  ReactDOM.render (<App/> , document.getElementById('app'));
+  ReactDOM.render (<App/> , document.getElementById('app'));

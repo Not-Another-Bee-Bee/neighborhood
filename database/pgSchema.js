@@ -1,6 +1,6 @@
 var pg = require('pg');
 var conString = "postgres://admin:@localhost:5432/trillo_cole";
-const { Pool, Client } = require('pg')
+const Pool = require('pg-pool');
 var connectionString = {
     user: 'admin',
     host: 'localhost',
@@ -11,14 +11,15 @@ var connectionString = {
 
 
 
-  var pool = new pg.Pool(connectionString);
+  var pool = new Pool(connectionString);
 
 
-pool.connect(function(err, client, done) {
+  pool.connect()
+  .then(client =>{
 
-    const query = client.query(new pg.Query(`
+    client.query(`
 
-      DROP TABLE if exists "properties";
+      DROP TABLE if exists "listings";
     
     
      DROP TABLE if exists "neighborhoods";
@@ -28,87 +29,44 @@ pool.connect(function(err, client, done) {
 
      
      CREATE TABLE "neighborhoods"
-     (
-      "neighborhood_id"        varchar(10) NOT NULL,
+     (   
+      "neighborhood_id"          SERIAL PRIMARY KEY,
       "transitscore"             decimal NOT NULL,
       "walkingscore"             decimal NOT NULL,
       "neighborhood_home_value" decimal(4, 2) NOT NULL,
-      "one_year_prediction"      decimal(4,2) NOT NULL,
-      CONSTRAINT "PK_walkingscore" PRIMARY KEY ( "neighboorhoods_id" )
+      "one_year_prediction"      decimal(4,2) NOT NULL
+      
      );
-     
-     
-     
-     
-     
-     
-     
-    
-     
+
+
      CREATE TABLE "listings"
      (
-      "listings_id"       serial NOT NULL,
-      "neighborhoods_id" varchar(10) NOT NULL,
-      "address"           varchar(50) NOT NULL,
+      "listing_id"       SERIAL PRIMARY KEY,
+      "neighborhood_id"  integer NOT NULL,
+      "address"           VARCHAR(50) NOT NULL,
       "price"             integer NOT NULL,
-      "images"            text [] NOT NULL,
-      "state"             varchar(20) NOT NULL,
-      "city"              varchar(50) NOT NULL,
+      "images"            VARCHAR(500) NOT NULL,
+      "state"             VARCHAR(500) NOT NULL,
+      "city"              VARCHAR(500) NOT NULL,
       "median_zestimate"  integer NOT NULL,
       "baths"             integer NOT NULL,
       "rooms"             integer NOT NULL,
-      "listing_status"    varchar(20) NOT NULL,
+      "listing_status"    VARCHAR(500) NOT NULL,
       "sq_ft"             integer NOT NULL,
-      CONSTRAINT "PK_listings" PRIMARY KEY ( "listings_id" ),
-      CONSTRAINT "FK_107" FOREIGN KEY ( "neighboorhoods_id" ) REFERENCES "neighborhoods" ( "neighboorhoods_id" )
+     CONSTRAINT "FK_107" FOREIGN KEY ( "neighborhood_id" ) REFERENCES "neighborhoods" ( "neighborhood_id" )
      );
-     CREATE INDEX ON listings(listings_id);
+     CREATE INDEX ON listings(listing_id);
      CREATE INDEX "fkIdx_107" ON "listings"
      (
-      "neighboorhoods_id"
+      "neighborhood_id"
      );
-     `))
-    query.on('end', (res) => {
-        // pool shutdown
-        console.log("ending");
-        pool.end()
-    })
-    query.on('error', (res) => {
-        console.log(res);
-    })
-
-    done()
+     `)
+     .then(res => {
+         client.release()
+         console.log('client released')
+     })
+     .catch(e=> {
+         client.release()
+         console.log("query error: ", e.message, e.stack)
+     })
 });
-
-
-
-// pool.connect(function(err, client, done) {
-
-//     const query = client.query(new pg.Query(`
-//     INSERT INTO properties (
-//        address, price, images, state, city, median_zestimate, baths, rooms, listing_status, sq_ft
-//     )
-//         select 
-//             left(md5(i::text, 50)),
-//             random() * 1000000::int,
-//             left(md5(i::text, 50)),
-//             left(md5(i::text, 2)),
-//             random() * 1000000::int,
-//             random_between(1, 6),
-//             random_between(1, 6),
-//             cast(cast(random() as integer) as boolean),
-//             random_between(2000, 10,000)
-//         from generate_series(1, 10) s(i)
-// `))
-//     query.on('end', (res) => {
-//         // pool shutdown
-//         console.log("ending");
-//         pool.end()
-//     })
-//     query.on('error', (res) => {
-//         console.log(res);
-//     })
-
-//     done()
-// });
-

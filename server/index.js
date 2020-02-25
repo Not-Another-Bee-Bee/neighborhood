@@ -1,7 +1,10 @@
-
+const newrelic = require('newrelic');
 const express = require('express');
 const path = require('path');
+const morgan = require('morgan');
 const app = express();
+app.use(morgan('dev'));
+
 const PORT = 3001;
 const {getFromDB,getNearbyHomesFromDB, postToDB, updateDB, deleteFromDB} = require('./controller.js');
 
@@ -23,7 +26,7 @@ app.get('/listings/:listingID', getFromDB);
 
 //get request to grab all nearby homes that are similar to the current listing id
 //middleware function inside of cotroller.js file
-app.get('/listings/:listingID', getNearbyHomesFromDB);
+//app.get('/listings/:listingID', getNearbyHomesFromDB);
 
 
 //post a listing by a specific agent
@@ -31,11 +34,11 @@ app.post('/listings/25/agents/2/listing', postToDB);
 
 
 //update a listing by a specific agent
-app.put('/listing/:listingID', updateDB);
+//app.put('/listing/:listingID', updateDB);
 
 
 //delete listing from DB based on listing ID
-app.delete('/listing/:listingID', deleteFromDB);
+//app.delete('/listing/:listingID', deleteFromDB);
 
 
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));

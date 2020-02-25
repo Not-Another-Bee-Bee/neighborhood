@@ -1,4 +1,5 @@
 const faker = require('faker');
+import {Performance} from {}
 const Listing = require('./mongoSchema.js');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/trilli_cole');

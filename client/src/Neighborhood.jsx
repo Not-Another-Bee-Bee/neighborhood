@@ -1,4 +1,5 @@
 import React from 'react';
+import newrelic from '/Users/admin/trillo/sb-service/newrelic.js';
 import axios from 'axios';
 import NeighborSummary from './NeighborSummary.jsx';
 import Nearbyhomes from './Nearbyhomes.jsx';
@@ -44,22 +45,19 @@ class App extends React.Component {
     
     //function to get data from the database 
 getNeighborhoodNumber() {
-    axios.get ('./listings')
+    axios.get ('/listings/2000')
     .then( (response)=>{
 
-    console.log(response.data[1].address)
+    console.log(response.data.listing_id)
     //set new state
     this.setState ({
-        number : response.data[1].neighborhood,
-        mapImage: response.data[0].mapImage,
-        walk_score: response.data[0].walk_score,
-        transit_score: response.data[0].transit_score,
-        price: response.data[0].price,
-        sqft: response.data[0].sqft,
-        bedNumber: response.data[0].bedNumber,
-        bathNumber: response.data[0].bathNumber,
-        address: response.data[0].address,
-        nearbyImage: response.data[0].nearbyImage
+        number: response.data.listing_id,
+        mapImage: response.data.image,
+        price: response.data.price,
+        sqft: response.data.sqft,
+        bedNumber: response.room,
+        bathNumber: response.data.bath,
+        address: response.data.address
     })
   })
   .catch( (error)=> {
