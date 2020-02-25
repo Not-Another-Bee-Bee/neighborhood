@@ -1,10 +1,10 @@
 const Listing = require('../database/models');
 const Pool = require('pg-pool');
 var connectionString = {
-    user: 'admin',
-    host: 'localhost',
+    user: 'postgres',
+    host: '13.52.242.251',
     database: 'trillo_cole',
-    password: null,
+    password: 'admin',
     port: 5432,
 };
 var pool = new Pool(connectionString);
