@@ -1,5 +1,5 @@
 import React from 'react';
-import newrelic from '/Users/admin/trillo/sb-service/newrelic.js';
+import newrelic from '/Users/admin/trillo/sb-service/newrelic';
 import axios from 'axios';
 import NeighborSummary from './NeighborSummary.jsx';
 import Nearbyhomes from './Nearbyhomes.jsx';
