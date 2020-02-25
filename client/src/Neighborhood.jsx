@@ -1,5 +1,5 @@
 import React from 'react';
-import newrelic from 'newrelic';
+
 import axios from 'axios';
 import NeighborSummary from './NeighborSummary.jsx';
 import Nearbyhomes from './Nearbyhomes.jsx';
