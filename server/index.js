@@ -1,4 +1,4 @@
-const newrelic = require('newrelic');
+//const newrelic = require('newrelic');
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
@@ -16,6 +16,11 @@ app.use(express.json())
 
 // Serve static files. Any requests for specific files will be served if they exist in the provided folder
 app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// app.get('/bundles.js', (req, res) => {
+//     res.send()
+//     })
+// });
 
 
 

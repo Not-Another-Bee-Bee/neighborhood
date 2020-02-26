@@ -1,5 +1,4 @@
 import React from 'react';
-
 import axios from 'axios';
 import NeighborSummary from './NeighborSummary.jsx';
 import Nearbyhomes from './Nearbyhomes.jsx';

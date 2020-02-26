@@ -14,7 +14,7 @@ module.exports = {
     //get data from the DB
     getFromDB: function (req, res) {
         const id  = req.params.listingID
-        console.log(id);
+        //console.log(id);
 
         pool.connect()
             .then(client => {
@@ -22,7 +22,7 @@ module.exports = {
                     .then(result => {
                         res.send(result.rows[0]);
                         client.release()
-                        console.log('client released')
+                        //console.log('client released')
                     })
                     .catch(e => {
                         client.release()
