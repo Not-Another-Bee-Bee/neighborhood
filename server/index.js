@@ -46,6 +46,5 @@ app.post('/listings/25/agents/2/listing', postToDB);
 //app.delete('/listing/:listingID', deleteFromDB);
 
 
-app.listen(PORT, () => console.log('Listening on port: ' + PORT));
-const server = app.listen(PORT);
+const server = app.listen(PORT, () => console.log('Listening on port: ' + PORT));
 server.keepAliveTimeout(65000);
