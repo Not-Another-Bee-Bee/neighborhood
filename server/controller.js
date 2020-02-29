@@ -1,7 +1,7 @@
 const Listing = require('../database/models');
 const Pool = require('pg-pool');
 var connectionString = {
-    max: 5,
+    max: 50,
     user: 'postgres',
     host: '18.144.177.197',
     database: 'trillo_cole',
