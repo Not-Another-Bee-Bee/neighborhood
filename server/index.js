@@ -47,5 +47,5 @@ app.post('/listings/25/agents/2/listing', postToDB);
 
 
 const server = app.listen(PORT, () => console.log('Listening on port: ' + PORT));
-server.keepAliveTimeout = 65000;
-server.headersTimeout = 63000;
+server.keepAliveTimeout = 5000;
+server.headersTimeout = 5300;
