@@ -3,7 +3,7 @@ const Pool = require('pg-pool');
 var connectionString = {
     max: 50,
     user: 'postgres',
-    host: '13.57.3.115',
+    host: '13.52.182.58',
     database: 'trillo_cole',
     password: 'admin',
     port: 5432,
