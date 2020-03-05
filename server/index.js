@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const app = express();
+app.use(morgan('dev'));
 
 const PORT = 3001;
 const {getFromDB,getNearbyHomesFromDB, postToDB, updateDB, deleteFromDB} = require('./controller.js');
